@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shrey Shah</title>
+  <meta name="description" content="Tech professional using AI to navigate real-world finance, productivity, and more." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d0d0d; --surface: #161616; --surface2: #1f1f1f;
+      --border: #2a2a2a; --text: #f0f0f0; --muted: #888888;
+      --accent: #60a5fa; --accent-lt: rgba(96,165,250,0.1);
+      --accent-border: rgba(96,165,250,0.25); --max-w: 700px; --radius: 14px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; }
+    nav { position: sticky; top: 0; z-index: 99; background: rgba(13,13,13,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; height: 54px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 15px; font-weight: 600; color: var(--text); text-decoration: none; letter-spacing: -0.2px; }
+    .nav-links { display: flex; gap: 4px; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; padding: 5px 12px; border-radius: 8px; transition: color 0.15s, background 0.15s; }
+    .nav-links a:hover { color: var(--text); background: var(--surface2); }
+    .nav-links a.active { color: var(--accent); background: var(--accent-lt); }
+    .hero { padding: 80px 24px 64px; max-width: var(--max-w); margin: 0 auto; }
+    .avatar { width: 84px; height: 84px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 700; color: #fff; letter-spacing: -1px; margin-bottom: 28px; box-shadow: 0 0 0 3px rgba(96,165,250,0.15), 0 8px 32px rgba(37,99,235,0.25); }
+    .hero h1 { font-size: clamp(32px, 5vw, 44px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.1; color: var(--text); margin-bottom: 8px; }
+    .hero-role { font-size: 15px; font-weight: 500; color: var(--accent); margin-bottom: 24px; }
+    .hero-bio { font-size: 16px; color: var(--muted); line-height: 1.75; max-width: 560px; margin-bottom: 24px; }
+    .hero-bio strong { color: var(--text); font-weight: 600; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 36px; }
+    .tag { font-size: 12px; font-weight: 500; color: var(--accent); background: var(--accent-lt); border: 1px solid var(--accent-border); padding: 4px 12px; border-radius: 100px; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 9px; text-decoration: none; transition: all 0.15s; }
+    .btn-primary { background: var(--accent); color: #0d0d0d; }
+    .btn-primary:hover { background: #93c5fd; }
+    .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+    hr { border: none; border-top: 1px solid var(--border); max-width: var(--max-w); margin: 0 auto; }
+    .stats { max-width: var(--max-w); margin: 0 auto; padding: 40px 24px; display: flex; }
+    .stat { flex: 1; text-align: center; padding: 0 16px; border-right: 1px solid var(--border); }
+    .stat:last-child { border-right: none; }
+    .stat-number { font-size: 26px; font-weight: 700; color: var(--text); letter-spacing: -1px; margin-bottom: 2px; }
+    .stat-number span { color: var(--accent); }
+    .stat-label { font-size: 12px; color: var(--muted); }
+    section { padding: 60px 24px; max-width: var(--max-w); margin: 0 auto; }
+    .section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+    .section-title { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); margin-bottom: 8px; }
+    .section-sub { font-size: 14px; color: var(--muted); margin-bottom: 32px; line-height: 1.6; }
+    .story-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s; text-decoration: none; display: block; margin-bottom: 16px; }
+    .story-card:hover { border-color: var(--accent-border); box-shadow: 0 4px 32px rgba(96,165,250,0.07); }
+    .story-card-inner { padding: 22px 24px; display: flex; gap: 16px; align-items: flex-start; }
+    .story-icon-wrap { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-lt); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .story-text { flex: 1; }
+    .story-meta-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .story-cat { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+    .story-date { font-size: 11px; color: var(--muted); margin-left: auto; }
+    .story-title { font-size: 16px; font-weight: 600; color: var(--text); letter-spacing: -0.3px; line-height: 1.4; margin-bottom: 6px; }
+    .story-excerpt { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .story-arrow { color: var(--muted); font-size: 18px; align-self: center; flex-shrink: 0; transition: transform 0.15s, color 0.15s; }
+    .story-card:hover .story-arrow { transform: translateX(3px); color: var(--accent); }
+    .placeholder-card { border: 1.5px dashed var(--border); border-radius: var(--radius); padding: 32px; text-align: center; color: var(--muted); }
+    .placeholder-card .ph-icon { font-size: 24px; margin-bottom: 8px; }
+    .placeholder-card p { font-size: 13px; line-height: 1.6; }
+    .placeholder-card strong { color: var(--text); }
+    footer { border-top: 1px solid var(--border); padding: 28px 24px; text-align: center; }
+    footer p { font-size: 12px; color: var(--muted); }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 520px) {
+      .hero { padding: 52px 20px 48px; }
+      .stats { flex-direction: column; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 16px 0; }
+      .stat:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">Shrey Shah</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">About</a>
+      <a href="stories.html">AI Stories</a>
+    </div>
+  </div>
+</nav>
+<div class="hero" id="about">
+  <div class="avatar">SS</div>
+  <h1>Shrey Shah</h1>
+  <div class="hero-role">Tech Professional &amp; AI Enthusiast &nbsp;&middot;&nbsp; Seattle, WA</div>
+  <p class="hero-bio">I'm a <strong>tech professional</strong> who's spent years at the intersection of software and real-world problem solving. Outside of work, I'm increasingly convinced that AI is the most underused personal tool most people have access to &mdash; not for writing emails or generating images, but for the genuinely hard, time-consuming stuff: <strong>taxes, financial decisions, research, and catching mistakes humans and software both miss.</strong></p>
+  <p class="hero-bio" style="margin-top: -12px;">This site is a running log of those moments &mdash; real examples from my own life where AI delivered something tangible.</p>
+  <div class="tags">
+    <span class="tag">&#x1F4B0; Finance</span>
+    <span class="tag">&#x26A1; Productivity</span>
+    <span class="tag">&#x1F3E0; Real Estate</span>
+    <span class="tag">&#x1F50D; Research</span>
+  </div>
+  <div class="cta-row">
+    <a href="stories.html" class="btn btn-primary">Read AI Stories &rarr;</a>
+    <a href="mailto:shreyshah501@gmail.com" class="btn btn-secondary">&#x2709; Get in touch</a>
+  </div>
+</div>
+<hr />
+<div class="stats">
+  <div class="stat"><div class="stat-number"><span>1</span></div><div class="stat-label">Story published</div></div>
+  <div class="stat"><div class="stat-number"><span>$</span>saved</div><div class="stat-label">Real money saved on taxes</div></div>
+  <div class="stat"><div class="stat-number"><span>&#x221E;</span></div><div class="stat-label">More coming soon</div></div>
+</div>
+<hr />
+<section id="stories-preview">
+  <div class="section-eyebrow">Latest</div>
+  <div class="section-title">Recent AI Stories</div>
+  <div class="section-sub">Real examples from my life &mdash; no fluff, just what happened.</div>
+  <a class="story-card" href="stories.html">
+    <div class="story-card-inner">
+      <div class="story-icon-wrap">&#x1F9FE;</div>
+      <div class="story-text">
+        <div class="story-meta-row"><span class="story-cat">Taxes &amp; Finance</span><span class="story-date">March 2026</span></div>
+        <div class="story-title">AI caught a tax error that would have cost me money</div>
+        <div class="story-excerpt">Tax software silently imported 401(k) dividends as taxable income. AI read the documents, cross-checked every number, and spotted the mistake instantly.</div>
+      </div>
+      <span class="story-arrow">&#x203A;</span>
+    </div>
+  </a>
+  <div class="placeholder-card">
+    <div class="ph-icon">&#x270D;&#xFE0F;</div>
+    <p><strong>More stories coming soon.</strong><br />Next: modeling a rental property refinance across multiple rate scenarios.</p>
+  </div>
+</section>
+<footer>
+  <p>Shrey Shah &nbsp;&middot;&nbsp; Hosted free on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
+</footer>
+</body>
+</html>
