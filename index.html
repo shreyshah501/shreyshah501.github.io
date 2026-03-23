@@ -106,7 +106,7 @@
 </div>
 <hr />
 <div class="stats">
-  <div class="stat"><div class="stat-number"><span>1</span></div><div class="stat-label">Story published</div></div>
+  <div class="stat"><div class="stat-number"><span id="story-count">2</span></div><div class="stat-label" id="story-count-label">Stories published</div></div>
   <div class="stat"><div class="stat-number"><span>$</span>350</div><div class="stat-label">Real money saved on taxes</div></div>
   <div class="stat"><div class="stat-number"><span>&#x221E;</span></div><div class="stat-label">More coming soon</div></div>
 </div>
@@ -135,5 +135,20 @@
 <footer>
   <p>Shrey Shah &nbsp;&middot;&nbsp; Hosted free on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a></p>
 </footer>
+
+  <script>
+    // Dynamically count published (non-future) stories from stories.html
+    fetch('stories.html')
+      .then(function(r) { return r.text(); })
+      .then(function(html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var count = doc.querySelectorAll('.tl-item:not(.future)').length;
+        var numEl = document.getElementById('story-count');
+        var labelEl = document.getElementById('story-count-label');
+        if (numEl) numEl.textContent = count;
+        if (labelEl) labelEl.textContent = count === 1 ? 'Story published' : 'Stories published';
+      })
+      .catch(function() {}); // fail silently — static fallback stays
+  </script>
 </body>
 </html>
